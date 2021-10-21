@@ -5,7 +5,7 @@ import { ChatRoom, JoinChat } from "./components";
 function App() {
   const [username, setUsername] = useState('TestUser');
   const [isJoined, setIsJoined] = useState(false);
-  const [room, setRoom] = useState('room1');
+  const [room, setRoom] = useState('Room 1');
   const [roomUsers, setRoomUsers] = useState([]);
 
   return (

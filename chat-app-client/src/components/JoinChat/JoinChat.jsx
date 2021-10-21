@@ -1,28 +1,14 @@
 import './styles.scss';
 
-const CHAT_ROOMS = [
-  {
-    displayName: 'Room 1',
-    value: 'room1',
-  },
-  {
-    displayName: 'Room 2',
-    value: 'room2',
-  },
-  {
-    displayName: 'Room 3',
-    value: 'room3',
-  },
-  {
-    displayName: 'Room 4',
-    value: 'room4',
-  },
-];
+const CHAT_ROOMS = ['Room 1', 'Room 2', 'Room 3', 'Room 4'];
 
 export const JoinChat = ({ username, setUsername, setIsJoined, room, setRoom }) => {
   const onUsernameInputChange = event => setUsername(event.target.value);
+  const onRoomChange = event => {
+    setRoom(event.target.value);
+    console.log('event', event.target.value);
+  }
   const joinRoom = () => setIsJoined(true);
-  const onRoomChange = event => setRoom(event.target.value);
 
   return (
       <div className='join-chat-container'>
@@ -39,7 +25,7 @@ export const JoinChat = ({ username, setUsername, setIsJoined, room, setRoom }) 
           <label htmlFor="room-select">Room</label>
           <select id='room-select' onChange={onRoomChange} value={room}>
             {CHAT_ROOMS.map(chatRoom =>
-                <option key={chatRoom.value} value={chatRoom.value}>{chatRoom.displayName}</option>)}
+                <option key={chatRoom} value={chatRoom}>{chatRoom}</option>)}
           </select>
         </div>
         <div className="join-room-button-container">

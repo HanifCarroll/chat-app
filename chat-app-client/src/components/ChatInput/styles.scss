@@ -4,6 +4,11 @@
 
 .chat-input {
   width: 100%;
+  min-height: 10px;
+  max-height: 100px;
+  resize: none;
+  overflow: hidden;
+  padding: 5px;
 }
 
 .chat-input-send {

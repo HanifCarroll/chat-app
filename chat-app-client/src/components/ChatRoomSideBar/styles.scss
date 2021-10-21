@@ -1,8 +1,16 @@
 .user-list-container {
   overflow: scroll;
   min-width: 150px;
+  padding-left: 5px;
+
+  .user-list {
+    list-style: none;
+  }
+
+  .user-list-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
 }
 
-.user-list {
-  list-style: none;
-}

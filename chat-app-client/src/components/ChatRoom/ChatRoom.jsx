@@ -30,7 +30,7 @@ export const ChatRoom = ({ username, room, setRoomUsers, roomUsers, setRoom, set
   };
 
   const leaveRoom = () => {
-    setRoom('');
+    setRoom({ displayName: '', value: '' });
     setIsJoined(false);
   };
 
@@ -68,7 +68,7 @@ export const ChatRoom = ({ username, room, setRoomUsers, roomUsers, setRoom, set
   return (
       <div className="App">
         <div className='chat-container'>
-          <ChatHeader leaveRoom={leaveRoom}/>
+          <ChatHeader leaveRoom={leaveRoom} room={room}/>
           <div className='user-message-container'>
             <ChatRoomSideBar users={roomUsers}/>
             <MessageList messages={messages} />
