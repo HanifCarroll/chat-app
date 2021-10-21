@@ -1,4 +1,3 @@
-import './App.css';
 import { useState } from "react";
 import { ChatRoom, JoinChat } from "./components";
 
@@ -10,20 +9,25 @@ function App() {
   const [roomUsers, setRoomUsers] = useState([]);
 
   return (
-      isJoined
-          ? <ChatRoom
+      <div className="app">
+        {isJoined ?
+          <ChatRoom
             username={username}
             room={room}
             roomUsers={roomUsers}
             setRoomUsers={setRoomUsers}
+            setIsJoined={setIsJoined}
+            setRoom={setRoom}
           />
           : <JoinChat
-          username={username}
-          setUsername={setUsername}
-          setIsJoined={setIsJoined}
-          setRoom={setRoom}
-          room={room}
+            username={username}
+            setUsername={setUsername}
+            setIsJoined={setIsJoined}
+            setRoom={setRoom}
+            room={room}
           />
+        }
+      </div>
   );
 }
 

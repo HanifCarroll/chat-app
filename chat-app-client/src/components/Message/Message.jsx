@@ -1,3 +1,6 @@
+import './styles.scss';
+
+
 export const Message = ({ text, username, time }) => {
   return (
       <div className="message">

@@ -1,4 +1,7 @@
-export const ChatRoomUserList = ({ users }) => {
+import './styles.scss';
+
+
+export const ChatRoomSideBar = ({ users }) => {
   return (
       <div className="user-list-container">
         <ul className="user-list">

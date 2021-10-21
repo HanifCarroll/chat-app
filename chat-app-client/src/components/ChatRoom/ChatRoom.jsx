@@ -1,21 +1,16 @@
 import moment from "moment";
 import { io } from "socket.io-client";
 import { useEffect, useRef, useState } from "react";
-import { ChatRoomUserList, MessageList } from "../";
+import { ChatRoomSideBar, MessageList, ChatInput, ChatHeader } from "../";
 import './styles.scss';
 
 const BOT_NAME = 'Chat Bot';
-const users = ['Me', 'You']
-export const ChatRoom = ({ username, room, setRoomUsers, roomUsers }) => {
+
+export const ChatRoom = ({ username, room, setRoomUsers, roomUsers, setRoom, setIsJoined }) => {
   const [message, setMessage] = useState('');
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const messageInputRef = useRef(null);
-  const onMessageInputEnter = event => {
-    if (event.which === 13) {
-      sendMessage();
-    }
-  };
   const onMessageInputChange = event => {
     setMessage(event.target.value);
   };
@@ -32,6 +27,11 @@ export const ChatRoom = ({ username, room, setRoomUsers, roomUsers }) => {
       time: moment().format('h:mm:ss a')
     };
     setMessages(messages => [...messages, newMessage]);
+  };
+
+  const leaveRoom = () => {
+    setRoom('');
+    setIsJoined(false);
   };
 
   useEffect(() => {
@@ -67,16 +67,18 @@ export const ChatRoom = ({ username, room, setRoomUsers, roomUsers }) => {
 
   return (
       <div className="App">
-        <input type="text"
-               onChange={onMessageInputChange}
-               value={message}
-               ref={messageInputRef}
-               onKeyDown={onMessageInputEnter}
-        />
-        <button onClick={sendMessage}>Send</button>
         <div className='chat-container'>
-          <ChatRoomUserList users={roomUsers}/>
-          <MessageList messages={messages} />
+          <ChatHeader leaveRoom={leaveRoom}/>
+          <div className='user-message-container'>
+            <ChatRoomSideBar users={roomUsers}/>
+            <MessageList messages={messages} />
+          </div>
+          <ChatInput
+              sendMessage={sendMessage}
+              message={message}
+              onMessageInputChange={onMessageInputChange}
+              inputRef={messageInputRef}
+          />
         </div>
       </div>
   );

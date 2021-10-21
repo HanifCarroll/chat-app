@@ -61,7 +61,7 @@ io.on('connection', socket => {
     const user = userJoin(data);
     socket.join(room);
 
-    socket.emit('room.welcome', `Connected to ${room} as ${username}.`);
+    socket.emit('room.welcome', `You connected to ${room} as ${username}.`);
     socket.broadcast.to(user.room).emit('room.join', `${username} has joined the chat.`);
 
     io.to(user.room).emit('room.users', {

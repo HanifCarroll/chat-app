@@ -1,0 +1,28 @@
+.join-chat-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 50px auto 0 auto;
+  padding-top: 50px;
+
+  div {
+    margin-bottom: 50px;
+  }
+}
+
+.username-container, .room-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.join-room-button-container {
+  width: 80%;
+  margin: 0 auto;
+
+  .join-room-button {
+    width: 100%;
+  }
+}
+
